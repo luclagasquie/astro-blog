@@ -1,0 +1,23 @@
+---
+import Navigation from "../components/Navigation.astro";
+import Menu from "../components/Menu.astro";
+---
+
+<style>
+  header {
+    & nav ul {
+      padding: unset;
+      display: flex;
+      flex-direction: row;
+      gap: 1em;
+    }
+  }
+</style>
+<header>
+  <Menu />
+  <nav id="main-menu" class="nav-links">
+    <ul>
+      <Navigation />
+    </ul>
+  </nav>
+</header>

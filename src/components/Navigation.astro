@@ -1,0 +1,30 @@
+---
+const links = [
+  {
+    url: "/",
+    label: "Home",
+  },
+  {
+    url: "/about",
+    label: "About",
+  },
+  {
+    url: "/blog",
+    label: "Blog",
+  },
+];
+---
+
+<style>
+  li {
+    list-style: none;
+  }
+</style>
+
+{
+  links.map((link) => (
+    <li>
+      <a href={link.url}>{link.label}</a>
+    </li>
+  ))
+}

@@ -22,23 +22,37 @@ h1 {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-header {
-  & nav ul {
-    padding: unset;
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
-  }
-  & li {
-    list-style: none;
-  }
-}
-
 a {
   color: #000;
   text-decoration: unset;
   &:hover {
     text-decoration: underline;
-    text-underline-offset: .2em;
+    text-underline-offset: 0.2em;
   }
 }
+
+/* nav styles */
+
+.nav-links {
+  display: none;
+}
+
+@media (width > 636px) {
+  .nav-links {
+    display: flex;
+  }
+  .menu {
+    display: none;
+  }
+}
+
+.menu {
+  border: 1px solid black;
+  font-size: 1rem;
+  padding: 5px 10px;
+}
+
+:has(.menu[aria-expanded="true"]) .nav-links {
+  display: unset;
+}
+
