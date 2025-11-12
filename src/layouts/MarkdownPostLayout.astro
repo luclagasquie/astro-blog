@@ -1,0 +1,55 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const { frontmatter } = Astro.props;
+
+const showTitle = false;
+---
+
+<BaseLayout pageTitle={frontmatter.title} showTitle={showTitle}>
+  <style>
+    .hero-alpha {
+        position: relative;
+        color: white;
+        padding-inline: 40px;
+        padding-block: 60px;
+        & .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+        & figure {
+            margin: 0;
+        }
+        & .hero-bg img {
+            inline-size: 100%;
+            block-size: 100%;
+        }
+    }
+    ul:has(.tag) {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5em;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      &::before {
+        content: "Tags:";
+        font-weight: bold;
+      }
+    }
+    
+  </style>
+  <div class="hero-alpha">
+    <h1>{frontmatter.title}</h1>
+    <figure class="hero-bg">
+      <img src={frontmatter.image.url} alt={frontmatter.image.alt} />
+    </figure>
+  </div>
+  <p>Published on: {frontmatter.pubDate.toString().slice(0, 10)}</p>
+  <p>Written by {frontmatter.author}</p>
+  <ul>
+    {frontmatter.tags?.map((tag: string) => <li class="tag">{tag}</li>)}
+  </ul>
+
+  <slot />
+</BaseLayout>
